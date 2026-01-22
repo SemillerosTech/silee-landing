@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "SILEE — Sistema Integral de Logoterapia y Educación Existencial",
   description:
     "SILEE es un proyecto educativo que integra la logoterapia de Viktor Frankl con la educación existencial. Un espacio para la reflexión, el sentido y el crecimiento interior.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

@@ -1,5 +1,5 @@
 import Image from "next/image";
-const logo = "/assets/logo-silee.svg";
+const logo = "/assets/simply-logo-silee.svg";
 
 const Header = () => {
   return (

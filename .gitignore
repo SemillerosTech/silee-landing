@@ -24,3 +24,27 @@ dist-ssr
 *.sln
 *.sw?
 
+# Next.js export output
+out
+
+# Environment variable files (do not commit)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel project settings
+.vercel
+
+# Test coverage output
+coverage
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Turbo / build cache
+.turbo
+
+# Optional: ESLint cache
+.eslintcache
+

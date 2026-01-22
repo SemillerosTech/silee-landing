@@ -1,4 +1,4 @@
-const logo = "/assets/logo-silee.svg";
+const logo = "/assets/logo-white-silee.svg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

@@ -1,5 +1,5 @@
 import Image from "next/image";
-const logo = "/assets/logo-silee.svg";
+const logo = "/assets/logo-white-silee.svg";
 const heroBackground = "/assets/calm-background.jpg";
 
 const HeroSection = () => {
