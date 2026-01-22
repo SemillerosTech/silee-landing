@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SILEE Design System - Sober, Reflective, Minimalist */
+
+@layer base {
+  :root {
+    /* Primary Navy - Main brand color */
+    --primary: 220 49% 27%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary Teal - Accent */
+    --secondary: 193 45% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Backgrounds */
+    --background: 0 0% 99%;
+    --foreground: 220 49% 20%;
+
+    /* Card surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 220 49% 20%;
+
+    /* Muted surfaces */
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 20% 45%;
+
+    /* Accent */
+    --accent: 193 45% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 49% 20%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders and inputs */
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 193 45% 55%;
+
+    --radius: 0.25rem;
+
+    /* Custom SILEE tokens */
+    --silee-navy: 220 49% 27%;
+    --silee-teal: 193 45% 55%;
+    --silee-cream: 40 30% 97%;
+    --silee-warm-gray: 30 10% 92%;
+  }
+
+  .dark {
+    --background: 220 49% 8%;
+    --foreground: 0 0% 95%;
+    --card: 220 49% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 49% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 193 45% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 49% 27%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 30% 18%;
+    --muted-foreground: 210 20% 65%;
+    --accent: 193 45% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 30% 22%;
+    --input: 220 30% 22%;
+    --ring: 193 45% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Montserrat", sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Montserrat", sans-serif;
+    @apply tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  /* Hero section background */
+  .bg-silee-primary {
+    background-color: hsl(var(--silee-navy));
+  }
+
+  .bg-silee-teal {
+    background-color: hsl(var(--silee-teal));
+  }
+
+  .bg-silee-cream {
+    background-color: hsl(var(--silee-cream));
+  }
+
+  /* Text colors */
+  .text-silee-navy {
+    color: hsl(var(--silee-navy));
+  }
+
+  .text-silee-teal {
+    color: hsl(var(--silee-teal));
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Container with generous margins */
+  .content-container {
+    @apply max-w-4xl mx-auto px-6 md:px-8;
+  }
+
+  /* Reflective text styling */
+  .text-reflective {
+    @apply text-lg md:text-xl leading-relaxed font-light;
+  }
+
+  /* Form input styling */
+  .silee-input {
+    @apply w-full px-4 py-3 border border-border rounded-sm bg-background text-foreground 
+           focus:outline-none focus:ring-1 focus:ring-accent transition-colors;
+  }
+
+  .silee-select {
+    @apply w-full px-4 py-3 border border-border rounded-sm bg-background text-foreground 
+           focus:outline-none focus:ring-1 focus:ring-accent transition-colors appearance-none;
+  }
+}
+
+@layer utilities {
+  /* Subtle fade-in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Gentle slide */
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
