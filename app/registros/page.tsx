@@ -23,8 +23,14 @@ type Registro = {
 };
 
 async function getRegistros(): Promise<Registro[]> {
+  const apiUrl = process.env.REGISTROS_API_URL;
+  
+  if (!apiUrl) {
+    throw new Error("REGISTROS_API_URL is not defined in environment variables");
+  }
+
   const res = await fetch(
-    "https://semilleros-lazox-newsletter.vercel.app/form",
+    apiUrl,
     {
       cache: "no-store",
     },

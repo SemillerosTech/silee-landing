@@ -91,7 +91,12 @@ export async function GET() {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  const res = await fetch("https://semilleros-lazox-newsletter.vercel.app/form", {
+  const apiUrl = process.env.REGISTROS_API_URL;
+  if (!apiUrl) {
+    return new Response("REGISTROS_API_URL not defined", { status: 500 });
+  }
+
+  const res = await fetch(apiUrl, {
     cache: "no-store",
   });
 
