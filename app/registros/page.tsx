@@ -7,14 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { RegistrosClient } from "./RegistrosClient";
 
 import { isRegistrosAuthed, login, logout } from "./actions";
 
@@ -92,69 +85,43 @@ export default async function RegistrosPage({
   const registros = await getRegistros();
 
   return (
-    <main className="min-h-screen p-6">
-      <div className="max-w-6xl mx-auto space-y-4">
-        <div className="flex items-center justify-between gap-4">
-          <h1 className="text-2xl font-semibold">Registros</h1>
-          <form action={logout}>
-            <Button type="submit" variant="outline">
-              Cerrar sesión
+    <main className="min-h-screen p-6 bg-background">
+      <div className="max-w-7xl mx-auto space-y-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-2">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <img
+              src="/assets/simply-logo-silee.svg"
+              alt="SILEE Logo"
+              className="h-10 sm:h-14 w-auto object-contain shrink-0"
+            />
+            <div className="space-y-0.5 sm:space-y-1">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+                Panel de Registros
+              </h1>
+              <p className="text-xs sm:text-sm lg:text-base text-muted-foreground line-clamp-2 sm:line-clamp-none">
+                Gestiona y filtra los prospectos capturados a través del formulario.
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex items-center gap-2 sm:gap-3">
+            <Button asChild variant="outline" className="shadow-sm w-full lg:w-auto h-11 sm:h-10">
+              <a href="/registros/csv" className="flex items-center justify-center">
+                Descargar CSV
+              </a>
             </Button>
-          </form>
+            <form action={logout} className="w-full lg:w-auto">
+              <Button
+                type="submit"
+                variant="ghost"
+                className="w-full text-destructive hover:text-destructive hover:bg-destructive/10 h-11 sm:h-10"
+              >
+                Cerrar sesión
+              </Button>
+            </form>
+          </div>
         </div>
 
-        <Card>
-          <CardContent className="pt-6">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>ID</TableHead>
-                  <TableHead>Nombre</TableHead>
-                  <TableHead>Correo</TableHead>
-                  <TableHead>Teléfono</TableHead>
-                  <TableHead>Mensaje</TableHead>
-                  <TableHead>Origen</TableHead>
-                  <TableHead>Cómo te describes</TableHead>
-                  <TableHead>Creado</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {registros.map((r) => (
-                  <TableRow key={r.id}>
-                    <TableCell className="whitespace-nowrap">{r.id}</TableCell>
-                    <TableCell className="whitespace-nowrap">
-                      {r.nombre}
-                    </TableCell>
-                    <TableCell className="whitespace-nowrap">
-                      {r.correo}
-                    </TableCell>
-                    <TableCell className="whitespace-nowrap">
-                      {r.telefono ?? "—"}
-                    </TableCell>
-                    <TableCell className="min-w-[220px]">
-                      {r.mensaje ?? "—"}
-                    </TableCell>
-                    <TableCell className="whitespace-nowrap">
-                      {r.origen ?? "—"}
-                    </TableCell>
-                    <TableCell className="whitespace-nowrap">
-                      {r.como_te_describes ?? "—"}
-                    </TableCell>
-                    <TableCell className="whitespace-nowrap">
-                      {new Date(r.creado_en).toLocaleString("es-MX")}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-
-            {registros.length === 0 ? (
-              <p className="text-sm text-muted-foreground mt-4">
-                No hay registros para mostrar.
-              </p>
-            ) : null}
-          </CardContent>
-        </Card>
+        <RegistrosClient initialRegistros={registros} />
       </div>
     </main>
   );
